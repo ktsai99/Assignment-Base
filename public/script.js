@@ -1,9 +1,7 @@
-"use strict";
+ const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
 
-const endpoint = "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json";
+ const cities = [];
 
-const cities = [];
-
-fetch(endpoint)
+ fetch(endpoint)
     .then(blob => blob.json())
     .then(data => cities.push(...data))
