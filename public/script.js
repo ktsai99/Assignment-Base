@@ -7,7 +7,7 @@ let cities = [];
 fetch(endpoint,{method: 'post'})
     .then(blob => blob.json())
     .then(data => cities.push(...data))
-    .then(console.log(cities));
+    //.then(console.log(cities));
 
 
 function findMatches(wordToMatch, cities)
@@ -22,9 +22,20 @@ function findMatches(wordToMatch, cities)
 function displayMatches()
 {
     const matchArray = findMatches(this.value,cities);
-    console.log(matchArray);
+    const html = matchArray.map(place => 
+    {
+        return `
+            <li>
+            <span class="name">${place.name}, ${place.zip}</span>
+            </li>
+        `;
+    }).join('');
+
+    suggestions.innerHTML = html;
 }
 
 const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector(".suggestions");
+
 searchInput.addEventListener("change",displayMatches);
 searchInput.addEventListener("keyup",displayMatches);
