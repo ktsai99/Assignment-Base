@@ -1,13 +1,10 @@
 "use strict";
-
+async function windowActions()
+{
 const endpoint = "/api";
 
-let cities = [];
-
-fetch(endpoint,{method: 'post'})
-    .then(blob => blob.json())
-    .then(data => cities.push(...data))
-    //.then(console.log(cities));
+const request = await fetch(endpoint,{method: 'post'});
+const cities = await request.json();
 
 
 function findMatches(wordToMatch, cities)
@@ -19,9 +16,9 @@ function findMatches(wordToMatch, cities)
     });
 }
 
-function displayMatches()
+function displayMatches(event)
 {
-    const matchArray = findMatches(this.value,cities);
+    const matchArray = findMatches(event.target.value,cities);
     const html = matchArray.map(place => 
     {
         return `
@@ -37,5 +34,8 @@ function displayMatches()
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector(".suggestions");
 
-searchInput.addEventListener("change",displayMatches);
-searchInput.addEventListener("keyup",displayMatches);
+searchInput.addEventListener("change",(evt) => {displayMatches(evt) });
+searchInput.addEventListener("keyup",(evt) => {displayMatches(evt) });
+}
+
+window.onload = windowActions;
