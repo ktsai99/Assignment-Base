@@ -1,53 +1,54 @@
 "use strict";
+
 async function windowActions()
 {
-const endpoint = "/api";
+    const endpoint = "/api";
 
-const request = await fetch(endpoint,{method: 'post'});
-const cities = await request.json();
+    const request = await fetch(endpoint,{method: 'post'});
+    const cities = await request.json();
 
-function findMatches(wordToMatch, cities)
-{
-    return cities.filter(place => 
+    function findMatches(wordToMatch, cities)
     {
-        const regex = new RegExp(wordToMatch,"gi");
-        return place.zip.match(regex) || place.name.match(regex) || place.type.match(regex);
-    });
-}
-
-function displayMatches(event)
-{
-    // Workaround to prevent empty search bar from displaying the entire array
-    if(event.target.value === "")
-    {
-        suggestions.innerHTML = "";
-        return;
+        return cities.filter(place => 
+        {
+            const regex = new RegExp(wordToMatch,"gi");
+            return place.zip.match(regex) || place.name.match(regex) || place.type.match(regex);
+        });
     }
 
-    const matchArray = findMatches(event.target.value,cities);
-    const html = matchArray.map(place => 
+    function displayMatches(event)
     {
-        return `
-            <li>
-                <ul>
-                    <li class="name">${place.name}</li>
-                    <li class="type">${place.category}</li>
-                    <li class="address">${place.address_line_1}</li>
-                    <li class="zip">${place.zip}</li>
-                </ul>
-            </li>
-        `;
-    }).join('');
+        // Workaround to prevent empty search bar from displaying the entire array
+        if(event.target.value === "")
+        {
+            suggestions.innerHTML = "";
+            return;
+        }
 
-    suggestions.innerHTML = html;
-}
+        const matchArray = findMatches(event.target.value,cities);
+        const html = matchArray.map(place => 
+        {
+            return `
+                <li>
+                    <ul>
+                        <li class="name">${place.name}</li>
+                        <li class="type">${place.category}</li>
+                        <li class="address">${place.address_line_1}</li>
+                        <li class="zip">${place.zip}</li>
+                    </ul>
+                </li>
+            `;
+        }).join('');
 
-const searchInput = document.querySelector('.search');
-const form = document.querySelector(".search-form");
-const suggestions = document.querySelector(".suggestions");
+        suggestions.innerHTML = html;
+    }
 
-searchInput.addEventListener("change",(evt) => {evt.preventDefault();displayMatches(evt)});
-searchInput.addEventListener("keyup",(evt) => {evt.preventDefault();displayMatches(evt) });
+    const searchInput = document.querySelector('.search');
+    const form = document.querySelector(".search-form");
+    const suggestions = document.querySelector(".suggestions");
+
+    searchInput.addEventListener("change",(evt) => {evt.preventDefault();displayMatches(evt)});
+    searchInput.addEventListener("keyup",(evt) => {evt.preventDefault();displayMatches(evt) });
 }
 
 window.onload = windowActions;
