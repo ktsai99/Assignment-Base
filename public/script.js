@@ -6,7 +6,6 @@ const endpoint = "/api";
 const request = await fetch(endpoint,{method: 'post'});
 const cities = await request.json();
 
-
 function findMatches(wordToMatch, cities)
 {
     return cities.filter(place => 
@@ -30,7 +29,12 @@ function displayMatches(event)
     {
         return `
             <li>
-            <span class="name">${place.name}, ${place.zip}</span>
+                <ul>
+                    <li class="name">${place.name}</li>
+                    <li class="type">${place.type}</li>
+                    <li class="address">${place.address_line_1}</li>
+                    <li class="zip">${place.zip}</li>
+                </ul>
             </li>
         `;
     }).join('');
