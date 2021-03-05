@@ -22,6 +22,7 @@ function findMatches(wordToMatch, cities)
 function displayMatches()
 {
     //const match
+    console.log(this.value);
 }
 
 const searchInput = document.querySelector(".search");
