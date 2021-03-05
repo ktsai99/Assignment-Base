@@ -1,30 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
-    <title>Assigment 1 - Kevin Tsai & Michael Hough</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Assignment 1 - Restaurant Search</title>
+    <header>Assigment 1 - Kevin Tsai & Michael Hough</header>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./style.css" />
-</head>
+  </head>
 
-<body>
-
-    <h1>Find your Restaurant</h1>
-    <form class="search">
+  <body>
+    <div class="container is-desktop">
+      <section class="py-6 hero">
+        <h1 class="py-6 title is-1 is-spaced has-text-black">
+          Find your Restaurant
+        </h1>
+      </section>
+      <form class="search">
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-large search" type="text" placeholder="Enter Name here...">
-            <span class="icon is-medium is-left">
-              <i class="fa fa-search"></i>
-            </span>
-            <span class="icon is-medium is-right">
-              <i class="fa fa-check"></i>
-            </span>
-          </div>
-    </form>
-    <ul class="suggestions"></ul>
-    <script src="script.js"></script>
-</body>
+          <input
+            class="input is-large search"
+            type="text"
+            placeholder="Enter Name here..."
+          />
+          <span class="icon is-medium is-left">
+            <i class="fa fa-search" style="font-size: 36px"></i>
+          </span>
+          <span class="icon is-medium is-right">
+            <i class="fa fa-utensils" style="font-size: 36px"></i>
+          </span>
+        </div>
+      </form>
+      <ul class="suggestions has-text-white"></ul>
+    </div>
+    <div class="address">
+      <address>Written by Kevin Tsai & Michael Hough</address>
+    </div>
+  </body>
+  <script src="script.js"></script>
 </html>

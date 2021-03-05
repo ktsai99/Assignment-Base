@@ -31,10 +31,7 @@ async function windowActions()
             return `
                 <li>
                     <ul>
-                        <li class="name">${place.name}</li>
-                        <li class="type">${place.category}</li>
-                        <li class="address">${place.address_line_1}</li>
-                        <li class="zip">${place.zip}</li>
+                        <li class="address"> ${place.category} — ${place.name} ${place.address_line_1} ${place.zip}</li>
                     </ul>
                 </li>
             `;
