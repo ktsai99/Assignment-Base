@@ -18,6 +18,13 @@ function findMatches(wordToMatch, cities)
 
 function displayMatches(event)
 {
+    // Workaround to prevent empty search bar from displaying the entire array
+    if(event.target.value === "")
+    {
+        suggestions.innerHTML = "";
+        return;
+    }
+
     const matchArray = findMatches(event.target.value,cities);
     const html = matchArray.map(place => 
     {
@@ -32,10 +39,11 @@ function displayMatches(event)
 }
 
 const searchInput = document.querySelector('.search');
+const form = document.querySelector(".search-form");
 const suggestions = document.querySelector(".suggestions");
 
-searchInput.addEventListener("change",(evt) => {displayMatches(evt) });
-searchInput.addEventListener("keyup",(evt) => {displayMatches(evt) });
+searchInput.addEventListener("change",(evt) => {evt.preventDefault();displayMatches(evt)});
+searchInput.addEventListener("keyup",(evt) => {evt.preventDefault();displayMatches(evt) });
 }
 
 window.onload = windowActions;
