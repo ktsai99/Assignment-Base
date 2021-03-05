@@ -21,10 +21,10 @@ function findMatches(wordToMatch, cities)
 
 function displayMatches()
 {
-    //const match
-    console.log(this.value);
+    const matchArray = findMatches(this.value,cities);
+    console.log(matchArray);
 }
 
-const searchInput = document.querySelector(".search");
+const searchInput = document.querySelector('.search');
 searchInput.addEventListener("change",displayMatches);
 searchInput.addEventListener("keyup",displayMatches);
