@@ -31,7 +31,7 @@ function displayMatches(event)
             <li>
                 <ul>
                     <li class="name">${place.name}</li>
-                    <li class="type">${place.type}</li>
+                    <li class="type">${place.category}</li>
                     <li class="address">${place.address_line_1}</li>
                     <li class="zip">${place.zip}</li>
                 </ul>
